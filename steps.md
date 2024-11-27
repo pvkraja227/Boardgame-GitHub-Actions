@@ -40,4 +40,58 @@ trivy --version
 
 goto repo/.github/workflows/333.yml
 
+write workflow file
+
+GitHub/settings/secrets and variables/secrets/new repository secret
+name: SONAR_TOKEN
+paste token 
+(goto SonarQube/administration/security/users/create token/copy pwd)
+
+name:SONAR_HOST_URL
+http://13.234.226.74:9000
+
+DOCKERHUB_USERNAME
+
+DOCKERHUB_TOKEN (pwd)
+
+in k8s-master:
+
+create svc, role, role binding and secrets in k8s master
+
+kubectl create namespace webapps
+vi svc.yml
+kubectl apply -f svc.yml
+vi role.yml
+kubectl apply -f role.yml
+vi bind.yml
+kubectl apply -f bind.yml (change name: git-actions-svc)
+vi secret.yml (change name: git-actions-svc-secret // kuber..: git-actions-svc)
+kubectl apply -f secret.yml
+
+cd .kube/
+ls
+cat config
+complex (do not work)
+base64 ~/.kube/config
+copy (and paste in below)
+
+GitHub/settings/secrets and variables/secrets/new repository secret
+name: KUBE_CONFIG
+paste token 
+
+change image in deployment-service.yaml
+
+commit changes
+
+since we are not using AWS, no external IP is present
+since only 1 worker node, chrome: publicIP:nodeport
+((kubectl get svc -n webapps, copy nodeport))
+
+Monitoring::
+
+in runner ec2
+
+mkdir monitoring
+cd monitoring
+
 
