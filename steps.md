@@ -27,11 +27,17 @@ chrome: publicIP:9000 (admin/admin change pwd)
 install maven: sudo apt install maven
 
 github/actions/new workflow/select java with maven/configure
-automatically creates /.github/workflows (name pipeline of your wish CICD.yml
+automatically creates /.github/workflows (name pipeline of your wish 333.yml
 (modify pipeline)
 name: CICD Pipeline
 (delete pull, which means any changes to push, pipeline will be triggered)
 runs-on: self-hosted
 run: mvn package --file pom.xml
+commit changes (in the repo, u'll find a brown dot, click it, pipeline is in progress)
+
+Install trivy - 5 steps in Runner
+trivy --version
+
+goto repo/.github/workflows/333.yml
 
 
