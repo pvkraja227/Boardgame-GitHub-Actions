@@ -8,6 +8,7 @@ follow k8s-setup file
 kubectl get nodes (1-master/1-worker)
 
 Runner / t2.large (VM to run all commands)
+sudo apt update
 github/settings/actions/runners/new self-hosted runner/linux/
 download: 2 sets of commands - copy n paste
 next tar -xvf actions-runner-linux-x64-2.321.0.tar.gz
