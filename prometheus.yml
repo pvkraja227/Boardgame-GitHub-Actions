@@ -1,0 +1,15 @@
+- job_name: 'blackbox'              # Job name for blackbox exporter
+    metrics_path: /probe              # Path for blackbox probe
+    params:
+      module: [http_2xx]              # Module to look for HTTP 200 response
+    static_configs:
+      - targets:
+        - http://prometheus.io        # HTTP target
+        - http://13.126.49.145:31064  # website
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: 13.235.248.225:9115  # Blackbox exporter address
