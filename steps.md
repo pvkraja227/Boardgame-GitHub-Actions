@@ -87,11 +87,102 @@ since we are not using AWS, no external IP is present
 since only 1 worker node, chrome: publicIP:nodeport
 ((kubectl get svc -n webapps, copy nodeport))
 
-Monitoring::
+EC2: monitoring (t2.large)
 
-in runner ec2
+sudo apt update
 
-mkdir monitoring
-cd monitoring
+chrome: prometheus.io/download/prometheus for linux
+wget (url link)/ls
+tar -xvf <tar file> (to unzip)
+
+cd prometheus
+./prometheus & (&, so that it runs in background)
+enter
+
+chrome: publicIP of runner:9090 (for prometheus)
+
+chrome: prometheus.io/download/blackbox exporter for linux
+wget (url link)/ls
+tar -xvf <tar file> (to unzip)
+
+cd ..
+cd blackbox
+./blackbox_exporter &
+enter
+
+chrome: publicIP:9115 (for blackbox exporter)
+
+cd ..
+cd prometheus
+vi prometheus.yml (paste)
+change blackbox IP to 13.234.226.74(runnerIP):9115//and modify the URL's you wish to monitor 
+http://13.126.49.145:31064 (website//workernodeIP:31064)
+http://prometheus.io - 2 targets
+
+we need to restart prometheus
+pgrep prometheus (2216)
+kill 2216
+./prometheus &
+
+goto prometheus dashboard/refresh/status/targets
+2 targets are getting monitored in Prometheus (blackbox and Prometheus)
+all endpoints are up and running 
+
+for proper visualization: setup graphana
+chrome: graphana download - 3 steps to install (at the end to start graphana enter .. 
+sudo /bin/systemctl start graphana-server
+
+chrome: pvublicIP:3000 (for Graphana)
+default: admin/admin (create new pwd)
+
+goto graphana dashboard/connections/data sources/add data source/select prometheus
+provide prometheus url/save and test
+right corner/import dashboard
+chrome: graphana dashboard blackbox exporter / Prometheus Blackbox Exporter (graphana labs) - ID 7587
+copy ID/paste/load
+select datasource - prometheus/import
+
+2 targets (http://13.126.49.145:31064 (website) and http://prometheus.io) are getting monitored in Graphana
+
+now setup node exporter:
+
+for website - blackbox exporter
+for runner - node exporter
+
+chrome: prometheus.io/download/node exporter for linux
+wget (url link)/ls
+tar -xvf <tar file> (to unzip)
+
+cd node_exporter
+./node_exporter &
+enter
+
+chrome: runnerIP:9100
+
+we need to copy below code in Prometheus.yml file again
+
+- job_name: 'node'
+  static_configs:
+    - targets: ['13.234.226.74:9100']
+
+cd ..
+cd prometheus
+ls
+vi prometheus.yml (add above)
+pgrep prometheus
+kill 22971
+./prometheus &
+enter
+
+pometheus dash board: all 3 are up and runing
+(node/blackbox/prometheus)
+
+chrome: graphana dashboard node exporter / Prometheus node Exporter (graphana labs) - ID 1860
+copy ID/paste/load
+select datasource - prometheus/import
+
+click on dashboards
+so, we have both the dashboards (node exporter/blackbox exporter) running
+
 
 
