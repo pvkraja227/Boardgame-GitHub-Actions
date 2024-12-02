@@ -193,7 +193,9 @@ copy ID/paste/load
 select datasource - prometheus/import
 
 click on dashboards
-so, we have both the dashboards (node exporter/blackbox exporter) running
+so, we have 2 dashboards 
+1. node: cpu, ram etc..
+2. blackbox: website and prometheus
 
 
 
