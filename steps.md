@@ -1,6 +1,17 @@
 https://www.youtube.com/watch?v=FTrTFOLbdm4&t=1666s
 The Ultimate CICD Corporate DevOps Pipeline Project | Real-Time DevOps Project | GitHub Actions
 
+Dis adv:
+platform dependent (GitHub - azure, aws commit)
+limited plugins
+
+
+Adv:
+can check the code on different versions
+can create new self hosted-runners/similar to docker image for agent in Jenkins (but docker image runs on separate host in Jenkins)
+opensource project/public project/not moving from one place to another
+no need to install too many tools (java 17, SonarQube scanner, SonarQube quality gate check)
+
 k8-1 / worker-1 (t2.med)
 
 sudo apt update
