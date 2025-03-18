@@ -56,7 +56,7 @@ write workflow file
 GitHub/settings/secrets and variables/secrets/new repository secret
 name: SONAR_TOKEN
 paste token 
-(goto SonarQube/administration/security/users/create token/copy pwd)
+(goto SonarQube/administration/security/users/create token/copy token)
 
 name:SONAR_HOST_URL
 http://13.234.226.74:9000
@@ -84,7 +84,7 @@ ls
 cat config
 complex (do not work)
 base64 ~/.kube/config
-copy (and paste in below)
+copy (and paste token in below)
 
 GitHub/settings/secrets and variables/secrets/new repository secret
 name: KUBE_CONFIG
