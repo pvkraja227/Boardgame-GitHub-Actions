@@ -36,6 +36,7 @@ sudo chmod 666 /var/run/docker.sock (for other users to use docker commands with
 docker run -itd -p 9000:9000 sonarqube:lts-community
 chrome: publicIP:9000 (admin/admin change pwd)
 install maven: sudo apt install maven
+install unzip: sudo apt install unzip
 
 github/actions/new workflow/select java with maven/configure
 automatically creates /.github/workflows (name pipeline of your wish 333.yml
@@ -92,7 +93,9 @@ paste token
 
 change image in deployment-service.yaml
 
-commit changes
+commit changes (automatically pipeline starts for any changes in repo and hit commit)
+run: ./run.sh in runner ec2 if the pipeline doesnt start
+if deployment not applied in k8s ec2, check: kubectl get nodes (if not present) run: sudo systemctl restart kubelet
 
 since we are not using AWS, no external IP is present
 since only 1 worker node, chrome: publicIP:nodeport
