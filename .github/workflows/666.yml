@@ -36,6 +36,12 @@ jobs:
     - name: Trivy FS scan
       run: trivy fs --format table -o fs.html .
 
+    - name: Upload Trivy Report
+      uses: actions/upload-artifact@v4
+      with:
+        name: Trivy-Scan-Report
+        path: fs.html
+
     - name: Install jq
       run: sudo apt-get update && sudo apt-get install -y jq
 
