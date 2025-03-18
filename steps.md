@@ -185,7 +185,7 @@ kill 22971
 ./prometheus &
 enter
 
-pometheus dash board: all 3 are up and runing
+pometheus dash board: all 3 are up and running
 (node/blackbox/prometheus)
 
 chrome: graphana dashboard node exporter / Prometheus node Exporter (graphana labs) - ID 1860
