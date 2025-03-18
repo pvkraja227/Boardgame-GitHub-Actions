@@ -21,10 +21,10 @@ kubectl get nodes (1-master/1-worker)
 Runner / t2.large (VM to run all commands)
 sudo apt update
 github/settings/actions/runners/new self-hosted runner/linux/
-download: 2 sets of commands - copy n paste
-next tar -xvf actions-runner-linux-x64-2.321.0.tar.gz
+in download: 2 sets of commands - copy n paste (curl and echo)
+next, tar -xvf actions-runner-linux-x64-2.322.0.tar.gz
 
-configure: 1st command / enter/dev-runner/skip label (runner succesfully added)
+in configure: 1st command / enter/skip name /skip label (runner succesfully added)
 again goto github/settings/actions/runners - runners created, but offline
 ls
 ./run.sh
@@ -53,7 +53,7 @@ goto repo/.github/workflows/333.yml
 
 write workflow file
 
-GitHub/settings/secrets and variables/secrets/new repository secret
+GitHub/settings/secrets and variables/actions/secrets/new repository secret
 name: SONAR_TOKEN
 paste token 
 (goto SonarQube/administration/security/users/create token/copy token)
