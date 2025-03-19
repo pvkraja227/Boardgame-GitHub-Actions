@@ -93,9 +93,11 @@ paste token
 
 change image in deployment-service.yaml
 
-commit changes (automatically pipeline starts for any changes in repo and hit commit)
-run: ./run.sh in runner ec2 if the pipeline doesnt start
-if deployment not applied in k8s ec2, check: kubectl get nodes (if not present) run: sudo systemctl restart kubelet
+commit changes
+
+((commit changes (automatically pipeline starts for any changes in repo and you see in actions)
+run: ./run.sh in runner ec2, if the pipeline doesnt start.
+if deployment.yml not applied in k8s ec2, check: kubectl get nodes (if not present) run: sudo systemctl restart kubelet))
 
 since we are not using AWS, no external IP is present
 since only 1 worker node, chrome: publicIP:nodeport
