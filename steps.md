@@ -132,8 +132,9 @@ cd ..
 cd prometheus
 vi prometheus.yml (paste)
 change blackbox IP to 13.234.226.74(runnerIP):9115//and modify the URL's you wish to monitor 
-http://13.126.49.145:31064 (website//workernodeIP:31064)
-http://prometheus.io - 2 targets
+2 targets:
+http://13.126.49.145:31064 (app website//workernodeIP:31064)
+http://prometheus.io - prometheus website 
 
 we need to restart prometheus
 pgrep prometheus (2216)
@@ -141,7 +142,7 @@ kill 2216
 ./prometheus &
 
 goto prometheus dashboard/refresh/status/targets
-2 targets are getting monitored in Prometheus (blackbox and Prometheus)
+2 targets are getting monitored in Prometheus dashboard (app website and Prometheus website)
 all endpoints are up and running 
 
 for proper visualization: setup graphana
